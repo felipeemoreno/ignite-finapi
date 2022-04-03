@@ -106,4 +106,10 @@ app.get('/statement/date', verifyIfExistsAccountCPF, (request, response) => {
 
   return response.json(statement);
 });
+
+app.get('/account', verifyIfExistsAccountCPF, (request, response) => {
+  const { customer } = request;
+
+  return response.json(customer);
+})
 app.listen(3333);
