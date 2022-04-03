@@ -119,8 +119,19 @@ app.put('/account', verifyIfExistsAccountCPF, (request, response) => {
 
 app.get('/account', verifyIfExistsAccountCPF, (request, response) => {
   const { customer } = request;
-
+  
   return response.json(customer);
-
+  
 })
+
+app.delete('/account', verifyIfExistsAccountCPF, (request, response) => {
+  const { customer } = request;
+
+  const customerIndexOf = customers.indexOf(customer);
+
+  customers.splice(customerIndexOf, 1);
+  
+  return response.status(200).json(customers);
+})
+
 app.listen(3333);
